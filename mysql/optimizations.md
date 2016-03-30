@@ -1,0 +1,2 @@
+- http://code.openark.org/blog/mysql/7-ways-to-convince-mysql-to-use-the-right-index
+	- Thought process outlining 7 ways (extreme->realistic) to convince MySQL to use the most efficient INDEX.
