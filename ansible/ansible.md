@@ -7,7 +7,6 @@ Aside from the standards set forth by the YAML language, there aren't any kind o
 As such, here I'll outline some various naming conventions that I've found useful and the least problematic:
 
 ### Capitlization
-#### 
 #### Handlers
 - Handlers MUST be lower-case
 	- Examples
@@ -43,25 +42,24 @@ For instance, given the below:
 ```yaml
 ---
 - vars:
-  - apps:
-      paths:
-        app1: /path/to/foo/app1
-        app2: /path/to/bar/app2
+	- apps:
+			paths:
+				app1: /path/to/foo/app1
+				app2: /path/to/bar/app2
+- tasks:
+	- name: Check the existence of application directories
+		stat:
+			path: "/var/www/vhosts/{{ item.value }}"
+		with_dict: "{{ apps.paths }}"
+		register: stat_result
 
----
-- name: Check the existence of application directories
-  stat:
-    path: "/var/www/vhosts/{{ item.value }}"
-  with_dict: "{{ apps.paths }}"
-  register: stat_result
-
-- name: Copy contents for all VirtualHost sites
-  copy:
-    src: "vhosts/{{ item.item.value }}"
-    dest: "/var/www/vhosts/{{ item.item.value }}"
-  with_items: "{{ stat_result.results }}"
-  when: item.stat.exists == False
-  register: stat_result.results
+	- name: Copy contents for all VirtualHost sites
+		copy:
+			src: "vhosts/{{ item.item.value }}"
+			dest: "/var/www/vhosts/{{ item.item.value }}"
+		with_items: "{{ stat_result.results }}"
+		when: item.stat.exists == False
+		register: stat_result.results
  ```
 
 ...the value of `stat_result` would be:

@@ -1,4 +1,8 @@
 # PHP
+## Versions
+- [Supported Versions](http://php.net/supported-versions.php)
+- [Unsupported Versions (i.e. End of Life)](http://php.net/eol.php)
+
 ## Cheat Sheets
 - [Index of every single example that exists in the online PHP manual (surprisingly useful when combined with CTRL+F)](http://php.net/manual/en/indexes.examples.php)
 - [Index of all functions/methods](http://php.net/manual/en/indexes.functions.php)
